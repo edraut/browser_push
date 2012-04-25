@@ -1,0 +1,23 @@
+<html>
+<head>
+<script src="http://localhost:8642/socket.io/socket.io.js"></script>
+<script>
+	var socket = io.connect('http://localhost:8642');
+
+	socket.on('connect',
+		function(){
+			socket.emit('session_id','test_session_id1');
+			socket.on('new_msg',function(msg){console.log(msg)})
+      socket.on('new_json',function(msg){
+        // message_object = eval('(' + msg + ')');
+        console.log(msg);
+      });
+		}
+	);
+
+</script>
+</head>
+<body>
+Node test.
+</body>
+</html>
